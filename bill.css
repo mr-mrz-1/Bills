@@ -1,0 +1,11 @@
+.partation{
+    padding: 1px;
+    border: 1px solid yellowgreen;
+    height: 600px
+}
+#root{
+background: #000000;
+    color: #ffffff;
+ padding: 0px;
+ margin: 0px;
+}
