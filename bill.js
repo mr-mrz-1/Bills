@@ -78,9 +78,9 @@ function CalculateRestaurantPOV(deliveryPrice){
     let tdsfound = (amountToRest * tdsvalue);
     let commissionable = amountToRest - tdsfound;
     let commission = commissionable * commissionvalue;
-    let gstoncommission = commission * 18/100;
     let confee = amountToRest * confeevalue;
     let finaldeducation = 0; 
+    let gstoncommission = (commission+confee) * 18/100;
 
     // let deliveryPrice = parseFloat(document.getElementById("inputDelivery").value) || 0;
 
@@ -108,17 +108,25 @@ function CalculateRestaurantPOV(deliveryPrice){
 function DeliveryPartnerPrice(){
     let dpToPickup = Math.ceil(parseFloat(document.getElementById("dpToPickup").value) || 0);
     let pickupToDrop = Math.ceil(parseFloat(document.getElementById("pickupToDrop").value) || 0);
+    document.getElementById("BaseFee").innerHTML = `${baseFee.toFixed(2)} `;
 
     let charge = 0;
     if(pickupToDrop <= smallDistance){
-        charge = smallDistancePriceKM * pickupToDrop + baseFee;
+        let smallDistanceCharge = smallDistancePriceKM * pickupToDrop;
+        charge = smallDistanceCharge + baseFee;
+        document.getElementById("Sdfee").innerHTML = `${smallDistanceCharge.toFixed(2)} `;
     }else{
-        charge = (smallDistancePriceKM * smallDistance) + baseFee + (longDistancePriceKM * (pickupToDrop - smallDistance));
+        let smallDistanceCharge = smallDistancePriceKM * smallDistance;
+        let longDistanceCharge = longDistancePriceKM * (pickupToDrop - smallDistance);
+        document.getElementById("Sdfee").innerHTML = `${smallDistanceCharge.toFixed(2)} `;
+        document.getElementById("Ldfee").innerHTML = `${longDistanceCharge.toFixed(2)} `;
+        charge = (smallDistanceCharge) + baseFee + (longDistanceCharge);
     }
 
     document.getElementById("DpGetPuToDrop").innerHTML = `: ${charge.toFixed(2)} `;
     // document.getElementById("DpGetDpToPu").innerHTML = `: ${charge.toFixed(2)} `;
 
+    
     let tag = document.querySelector('input[name="DF"]:checked').value;
     let fee = 0;
     if(tag === "normalDf"){
@@ -155,6 +163,7 @@ function DeliveryPartnerPrice(){
     fee += charge;
     
     document.getElementById("DpGotTotal").innerHTML = `: ${fee.toFixed(2)} `;
+
     
     return charge;
 }
