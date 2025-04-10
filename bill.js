@@ -123,7 +123,7 @@ function DeliveryPartnerPrice(){
         charge = (smallDistanceCharge) + baseFee + (longDistanceCharge);
     }
 
-    document.getElementById("DpGetPuToDrop").innerHTML = `: ${charge.toFixed(2)} `;
+    document.getElementById("DpGetPuToDrop").innerHTML = `${charge.toFixed(2)} `;
     // document.getElementById("DpGetDpToPu").innerHTML = `: ${charge.toFixed(2)} `;
 
     
@@ -158,11 +158,11 @@ function DeliveryPartnerPrice(){
         alert("Error");
     }
     
-    document.getElementById("DpGetDpToPu").innerHTML = `: ${fee.toFixed(2)} `;
+    document.getElementById("DpGetDpToPu").innerHTML = `${fee.toFixed(2)} `;
     
     fee += charge;
     
-    document.getElementById("DpGotTotal").innerHTML = `: ${fee.toFixed(2)} `;
+    document.getElementById("DpGotTotal").innerHTML = `${fee.toFixed(2)} `;
 
     
     return charge;
