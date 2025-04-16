@@ -48,6 +48,7 @@ function CalculateCustomerPOV(deliveryPrice){
 
     let itemPrice = parseFloat(document.getElementById("inputPrice").value) || 0;
     let discountPrice = parseFloat(document.getElementById("inputDiscount").value) || 0;
+    itemPrice -= discountPrice;
     // let deliveryPrice = parseFloat(document.getElementById("inputDelivery").value) || 0;
     
 const WhoGiveDelivery = document.querySelector('input[name="WDF"]:checked').value;
@@ -58,7 +59,7 @@ let gst5 = (itemPrice * gstvalue);
     document.getElementById("PlatformFee").innerHTML = platformfee.toFixed(2);
     document.getElementById("PromoCode").innerHTML = - discountPrice.toFixed(2);
 
-     finalPrice = gst5 + gstonpf + platformfee + itemPrice - discountPrice;
+     finalPrice = gst5 + gstonpf + platformfee + itemPrice;
     if(WhoGiveDelivery === "Customer"){
         document.getElementById("DeliveryFee").innerHTML = deliveryPrice;
         finalPrice += deliveryPrice;
@@ -75,6 +76,7 @@ let gst5 = (itemPrice * gstvalue);
 
 function CalculateRestaurantPOV(deliveryPrice){
     document.getElementById("Rtotal").innerHTML = amountToRest.toFixed(2);
+    let discount 
     let tdsfound = (amountToRest * tdsvalue);
     let commissionable = amountToRest - tdsfound;
     let commission = commissionable * commissionvalue;
@@ -124,7 +126,6 @@ function DeliveryPartnerPrice(){
     }
 
     document.getElementById("DpGetPuToDrop").innerHTML = `${charge.toFixed(2)} `;
-    // document.getElementById("DpGetDpToPu").innerHTML = `: ${charge.toFixed(2)} `;
 
     
     let tag = document.querySelector('input[name="DF"]:checked').value;
