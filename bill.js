@@ -46,9 +46,10 @@ buttonClick.addEventListener("click", function(){
 
 function CalculateCustomerPOV(deliveryPrice){
 
-    let itemPrice = parseFloat(document.getElementById("inputPrice").value) || 0;
+    let itemP = parseFloat(document.getElementById("inputPrice").value) || 0;
     let discountPrice = parseFloat(document.getElementById("inputDiscount").value) || 0;
-    itemPrice -= discountPrice;
+    let itemPrice = itemP - discountPrice;
+
     // let deliveryPrice = parseFloat(document.getElementById("inputDelivery").value) || 0;
     
 const WhoGiveDelivery = document.querySelector('input[name="WDF"]:checked').value;
@@ -76,7 +77,7 @@ let gst5 = (itemPrice * gstvalue);
 
 function CalculateRestaurantPOV(deliveryPrice){
     document.getElementById("Rtotal").innerHTML = amountToRest.toFixed(2);
-    let discount 
+
     let tdsfound = (amountToRest * tdsvalue);
     let commissionable = amountToRest - tdsfound;
     let commission = commissionable * commissionvalue;
