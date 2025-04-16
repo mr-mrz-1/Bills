@@ -15,8 +15,8 @@ let gstoncommisionvalue = commissionvalue * 18/100;
 
 let smallDistance = 4;
 let smallDistancePriceKM = 2;
-let baseFee = 25;
-let longDistancePriceKM = 10;
+let baseFee = 15;
+let longDistancePriceKM = 8;
 
 let DFn1Range = 3;
 let Dfn1Price = 5;
